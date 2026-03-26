@@ -20,5 +20,20 @@ function solveEquation(a, b, c) {
   return arr;
 }
 
-const roots = solveEquation(1, -3, 2);
-console.log(roots);
+
+function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+
+  const P = (percent / 100) / 12;
+
+  const S = amount - contribution;
+
+  if (S <= 0) {
+    return 0;
+  }
+
+  const monthlyPayment = S * (P + (P / (Math.pow(1 + P, countMonths) - 1)));
+
+  const totalAmount = monthlyPayment * countMonths;
+
+  return Math.round(totalAmount * 100) / 100;
+}
