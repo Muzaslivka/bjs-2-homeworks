@@ -58,20 +58,35 @@ function differenceEvenOddWorker(...args) {
 function averageEvenElementsWorker(...args) {
 
   if (args.length === 0) return 0;
-  
+
   let sumEven = 0;
   let countEven = 0;
-  
+
   for (let num of args) {
     if (num % 2 === 0) {
       sumEven += num;
       countEven++;
     }
   }
-  
+
   return countEven === 0 ? 0 : +(sumEven / countEven).toFixed(2);
 }
 
 function makeWork(arrOfArr, func) {
 
+  let maxWorkerResult = -Infinity;
+
+  for (let subArr of arrOfArr) {
+
+    const result = func(...subArr);
+
+    if (result > maxWorkerResult) {
+
+      maxWorkerResult = result;
+    }
+  }
+
+  return maxWorkerResult;
+
 }
+
